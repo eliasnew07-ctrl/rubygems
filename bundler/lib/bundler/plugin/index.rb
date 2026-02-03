@@ -238,7 +238,7 @@ module Bundler
         return path unless pathname.absolute?
 
         base_path = Pathname.new(base)
-        if pathname.to_s.start_with?(base_path.to_s + "/")
+        if pathname == base_path || pathname.to_s.start_with?(base_path.to_s + File::SEPARATOR)
           pathname.relative_path_from(base_path).to_s
         else
           path
